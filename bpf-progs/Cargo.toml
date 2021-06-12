@@ -1,0 +1,23 @@
+[package]
+name = "bpf-progs"
+version = "0.1.0"
+edition = '2018'
+
+[dependencies]
+redbpf-macros = "1.3"
+redbpf-probes = "1.3"
+
+[build-dependencies]
+cargo-bpf = { version = "1.3", default-features = false }
+
+[features]
+default = []
+probes = []
+
+[lib]
+path = "src/lib.rs"
+
+[[bin]]
+name = "block_icmp"
+path = "src/block_icmp/main.rs"
+required-features = ["probes"]
