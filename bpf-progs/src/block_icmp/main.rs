@@ -11,7 +11,7 @@ pub fn block_icmp(ctx: XdpContext) -> XdpResult {
     if let Ok(iph) = ctx.ip() {
         unsafe {
             if (*iph).protocol as u32 == 1 {
-                bpf_trace_printk(b"PING\0");
+                bpf_trace_printk(b"PING");
                 return Ok(XdpAction::Drop);
             }
         }
